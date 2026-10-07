@@ -1,3 +1,21 @@
 type Query {
     hello: String
+    places: [Place!]!
+    # An empty list is perfectly valid:
+    #[]
+    #
+    #But these aren't:
+    #null
+    #
+    #[Place, null, Place]
+}
+
+type Place {
+    id: ID!
+    name: String!
+    category: String!
+    description: String!
+    neighbourhood: String!
+    estimatedCost: Float!
+    indoor: Boolean!
 }
