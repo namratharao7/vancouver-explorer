@@ -1,6 +1,6 @@
 type Query {
     hello: String
-    places: [Place!]!
+    places(maxCost: Float): [Place!]!
     # An empty list is perfectly valid:
     #[]
     #

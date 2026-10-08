@@ -32,4 +32,12 @@ public class InMemoryPlaceRepository implements PlaceRepository{
         );
         return List.of(stanleyPark, granvilleIsland);
     }
+
+    @Override
+    public List<Place> findByMaxCost(double maxCost) {
+        return findAll()
+                .stream()
+                .filter(place -> place.getEstimatedCost() <= maxCost)
+                .toList();
+    }
 }
