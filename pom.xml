@@ -49,6 +49,12 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- LangChain4j integration with Google's Gemini API -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-google-genai</artifactId>
+            <version>1.22.0-beta32</version>
+        </dependency>
     </dependencies>
 
     <build>
