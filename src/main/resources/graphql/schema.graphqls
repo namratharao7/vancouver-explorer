@@ -9,6 +9,7 @@ type Query {
     #
     #[Place, null, Place]
     askGemini(prompt: String!): String!
+    exploreVancouver(request: String!): String!
 }
 
 type Place {

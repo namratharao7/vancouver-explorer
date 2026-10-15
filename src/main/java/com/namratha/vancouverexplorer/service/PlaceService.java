@@ -24,4 +24,19 @@ public class PlaceService {
         }
         return result;
     }
+
+    public List<Place> getPlaces(Double maxCost, String category) {
+        List<Place> result = placeRepository.findAll();
+
+        //if there are maxCost restrictions then lets filter out all places over that maxCost
+        if(maxCost != null) {
+            //use Streams to filter out maxCost
+           result =  result.stream().filter(place -> place.getEstimatedCost() <= maxCost).toList();
+        }
+        //if there are category restrictions then lets filter out all places that don't belong to that category
+        if(category != null && !category.isBlank()) {
+            result = result.stream().filter(place ->  place.getCategory().equalsIgnoreCase(category)).toList();
+        }
+        return result;
+    }
 }

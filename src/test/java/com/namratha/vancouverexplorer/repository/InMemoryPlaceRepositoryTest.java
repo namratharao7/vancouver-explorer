@@ -21,11 +21,12 @@ public class InMemoryPlaceRepositoryTest {
     void findByMaxCostReturnsPlacesWithinBudget() {
         //Arrange
         //Act
-        List< Place> result = inMemoryPlaceRepository.findByMaxCost(15);
+        List<Place> result = inMemoryPlaceRepository.findByMaxCost(15);
 
         //Assert
-        assertEquals(1, result.size());
-        assertEquals("Stanley Park", result.get(0).getName());
+        assertEquals(3, result.size());
+        assertTrue(result.stream().allMatch(place -> place.getEstimatedCost() <= 15.0));
+        assertEquals(List.of("Stanley Park", "Lynn Canyon Park", "Queen Elizabeth Park"), result.stream().map(Place::getName).toList());
     }
 
     @Test
@@ -35,7 +36,7 @@ public class InMemoryPlaceRepositoryTest {
         List<Place> result = inMemoryPlaceRepository.findByMaxCost(20);
 
         //Assert
-        assertEquals(2, result.size());
+        assertEquals(4, result.size());
     }
 
     @Test

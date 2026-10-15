@@ -26,7 +26,7 @@ public class PlaceQueryIntegrationTest {
                 .execute()
                 .path("places[*].name")
                 .entityList(String.class)
-                .hasSize(1)
+                .hasSize(3)
                 .contains("Stanley Park");
     }
 
