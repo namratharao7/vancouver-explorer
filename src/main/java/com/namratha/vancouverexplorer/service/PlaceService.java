@@ -39,4 +39,16 @@ public class PlaceService {
         }
         return result;
     }
+
+    public List<Place> getPlacesByNeighbourhood(String neighbourhood) {
+
+        //retrieve all places from the place repository using findAll()
+        List<Place> result = placeRepository.findAll();
+
+        //filter places by getNeighbourhood()
+        if(neighbourhood != null && !neighbourhood.isBlank()) {
+            result = result.stream().filter(place -> place.getNeighbourhood().equalsIgnoreCase(neighbourhood)).toList();
+        }
+        return result;
+    }
 }
