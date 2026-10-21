@@ -1,13 +1,27 @@
 package com.namratha.vancouverexplorer.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "places")
 public class Place {
+    @Id
     private String id;
     private String name;
     private String category;
     private String neighbourhood;
     private String description;
+    //Spring Boot's default Hibernate naming strategy would typically map estimatedCost to estimated_cost automatically.
+    // We're adding the annotation to make that relationship explicit
+    @Column(name = "estimated_cost")
     private double estimatedCost;
     private boolean indoor;
+
+    protected Place() {
+    }
 
     public String getName() {
         return name;
